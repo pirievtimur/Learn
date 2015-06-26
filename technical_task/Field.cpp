@@ -80,12 +80,12 @@ void Field::drawLine(int x1, int y1, int x2, int y2)
 		ptr[(int)y][x] = 1;
 	}
 
-	//for(int y = min(y1, y2); y < max(y1,y2); y++)
-	//{
-	//	double x = ((y - y1)*(x2 - x1))/(y2 - y1) + x1;
-	//	x = (x - (int)x) < 0.5 ? floor(x) : ceil(x);
-	//	ptr[y][(int)x] = 1;
-	//}
+	for(int y = min(y1, y2); y < max(y1,y2); y++)
+	{
+		double x = ((y - y1)*(x2 - x1))/(y2 - y1) + x1;
+		x = (x - (int)x) < 0.5 ? floor(x) : ceil(x);
+		ptr[y][(int)x] = 1;
+	}
 
 	ptr[y1][x1] = 2;
 	ptr[y2][x2] = 2;
