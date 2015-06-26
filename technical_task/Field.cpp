@@ -1,4 +1,5 @@
 #include "Field.h"
+//#include 
 
 void Field::init(int size)
 {
@@ -72,6 +73,21 @@ void Field::drawLine(int x1, int y1, int x2, int y2)
 	{
 		return;
 	}
-	ptr[x1][y1] = 1;
-	ptr[x2][y2] = 1;
+	for(int x = min(x1, x2); x < max(x1,x2); x++)
+	{
+		double y = ((x - x1)*(y2 - y1))/(x2 - x1) + y1;
+		y = (y - (int)y) < 0.5 ? floor(y) : ceil(y);
+		ptr[(int)y][x] = 1;
+	}
+
+	//for(int y = min(y1, y2); y < max(y1,y2); y++)
+	//{
+	//	double x = ((y - y1)*(x2 - x1))/(y2 - y1) + x1;
+	//	x = (x - (int)x) < 0.5 ? floor(x) : ceil(x);
+	//	ptr[y][(int)x] = 1;
+	//}
+
+	ptr[y1][x1] = 2;
+	ptr[y2][x2] = 2;
+
 }
