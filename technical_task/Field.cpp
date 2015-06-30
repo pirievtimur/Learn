@@ -77,6 +77,10 @@ void Field::drawLine(int x1, int y1, int x2, int y2)
 	{
 		double y = ((x - x1)*(y2 - y1))/(x2 - x1) + y1;
 		y = (y - (int)y) < 0.5 ? floor(y) : ceil(y);
+		if (ptr[(int)y][x] == 'x')
+		{
+			ptr[(int)y][x] == 'C';
+		}
 		ptr[(int)y][x] = 'x';
 	}
 
@@ -84,6 +88,10 @@ void Field::drawLine(int x1, int y1, int x2, int y2)
 	{
 		double x = ((y - y1)*(x2 - x1))/(y2 - y1) + x1;
 		x = (x - (int)x) < 0.5 ? floor(x) : ceil(x);
+		if (ptr[y][(int)x] == 'x')
+		{
+			ptr[y][(int)x] == 'C';
+		}
 		ptr[y][(int)x] = 'x';
 	}
 
