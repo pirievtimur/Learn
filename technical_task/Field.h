@@ -1,23 +1,25 @@
 #define DEFAULT_ARRAY_SIZE 10
 #include <iostream>
+#include <algorithm>
+
 using namespace std;
 
 class Field
 {
 private:
-	int size;
-	int** ptr;
+	int size; //size of field x and y 
+	char** ptr; // pointer to array
 public:
-	Field();
-	Field(int size);
-	Field(Field &fieldToCopy);
-	~Field();
+	Field(); // default constructor
+	Field(int size); // constructor with size parameter
+	Field(Field &fieldToCopy); // copying constructor
+	~Field(); // destructor
 
-	void deinit();
-	void init(int size);
-	void printField();
-	void clearField();
-	void drawLine(int x1, int y1, int x2, int y2);
+	void init(int size); // additional func fo constructor
+	void deinit(); // additional func for destructor
+	void printField(); // func for display field
+	void clearField(); // applying value 'O' to every point
+	void drawLine(int x1, int y1, int x2, int y2); // draw line 
 };
 
 

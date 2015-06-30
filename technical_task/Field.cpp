@@ -1,16 +1,16 @@
 #include "Field.h"
-//#include 
+#include <iostream>
 
 void Field::init(int size)
 {
 	this->size = size;
-	ptr = new int*[size];
+	ptr = new char*[size];
 	for (int i = 0; i < size; i++)
 	{
-		ptr[i] = new int[size];
+		ptr[i] = new char[size];
 		for (int j = 0; j < size; j++)
 		{
-			ptr[i][j] = 0;
+			ptr[i][j] = 'O';
 		}
 	}
 }
@@ -77,17 +77,17 @@ void Field::drawLine(int x1, int y1, int x2, int y2)
 	{
 		double y = ((x - x1)*(y2 - y1))/(x2 - x1) + y1;
 		y = (y - (int)y) < 0.5 ? floor(y) : ceil(y);
-		ptr[(int)y][x] = 1;
+		ptr[(int)y][x] = 'x';
 	}
 
 	for(int y = min(y1, y2); y < max(y1,y2); y++)
 	{
 		double x = ((y - y1)*(x2 - x1))/(y2 - y1) + x1;
 		x = (x - (int)x) < 0.5 ? floor(x) : ceil(x);
-		ptr[y][(int)x] = 1;
+		ptr[y][(int)x] = 'x';
 	}
 
-	ptr[y1][x1] = 2;
-	ptr[y2][x2] = 2;
+	ptr[y1][x1] = 'X';
+	ptr[y2][x2] = 'X';
 
 }
